@@ -21,11 +21,15 @@ function SalesCard() {
 
     // Implementando chamadas com Axios
     useEffect(() => {
-        axios.get(`${BASE_URL}/sales`)
+        // Transforma as datas vindas das DatePicker em string já formatadas com 10 caracteres
+        const dmin = minDate.toISOString().slice(0, 10);
+        const dmax = maxDate.toISOString().slice(0, 10);
+
+        axios.get(`${BASE_URL}/sales?minDate=${dmin}&maxDate=${dmax}`)
         .then(response => {
             setSales(response.data.content);
         });
-    }, []);
+    }, [minDate, maxDate]); // [minDate, maxDate] toda vez que um dos dois atributos forem alterados a requisição é atualizada
 
     return (
         <div className="dsmeta-card">
