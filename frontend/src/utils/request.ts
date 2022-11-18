@@ -1,0 +1,2 @@
+// Pega o valor padrão 'http://localhost:8080', caso não hava algum valor na variavel de ambiente 'import.meta.env.VITE_BACKEND_URL' 
+export const BASE_URL = import.meta.env.VITE_BACKEND_URL ?? "http://localhost:8080";
